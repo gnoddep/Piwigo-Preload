@@ -24,16 +24,16 @@
     <legend>{'Configuration'|translate}</legend>
     <ul>
       <li>
-	<label for="preloadImageCount">
-	  <b style="width:40em;">{'Number of Images to Preload'|translate}:</b>
-	</label>
-	<input type="number" size="2" maxlength="3" name="preloadImageCount" id="preloadImageCount" value="{$Preload.imageCount}" min="0" max="10" style="width: 50px;">
+        <label for="preloadImageCount">
+          <b style="width:40em;">{'Number of Images to Preload'|translate}:</b>
+        </label>
+        <input type="number" size="2" maxlength="3" name="preloadImageCount" id="preloadImageCount" value="{$Preload.imageCount}" min="0" max="10" style="width: 50px;">
       </li>
       <li>
-	<input type="checkbox" name="preloadSquareThumbs" id="preloadSquareThumbs"{if $Preload.squareThumbs} checked="checked"{/if}>
-	<label for="preloadSquareThumbs">
-	  <b style="width:40em;">{'Preload Square Thumbnails'|translate}</b>
-	</label>
+        <input type="checkbox" name="preloadSquareThumbs" id="preloadSquareThumbs"{if $Preload.squareThumbs} checked="checked"{/if}>
+        <label for="preloadSquareThumbs">
+          <b style="width:40em;">{'Preload Square Thumbnails'|translate}</b>
+        </label>
       </li>
     </ul>
   </fieldset>

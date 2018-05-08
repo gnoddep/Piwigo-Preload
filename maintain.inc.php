@@ -29,9 +29,9 @@ class Preload_maintain extends PluginMaintain
   private $installed = false;
 
   private $default_conf = array(
-				'imageCount' => 1,
-				'squareThumbs' => true,
-				);
+                                'imageCount' => 1,
+                                'squareThumbs' => true,
+                                );
 
   function __construct($plugin_id)
   {
@@ -44,20 +44,20 @@ class Preload_maintain extends PluginMaintain
 
     if (empty($conf[PRELOAD_ID]))
       {
-	$conf[PRELOAD_ID] = serialize($this->default_conf);
-	conf_update_param(PRELOAD_ID, $conf[PRELOAD_ID]);
+        $conf[PRELOAD_ID] = serialize($this->default_conf);
+        conf_update_param(PRELOAD_ID, $conf[PRELOAD_ID]);
       }
     else
       {
-	$new_conf = is_string($conf[PRELOAD_ID]) ? unserialize($conf[PRELOAD_ID]) : $conf[PRELOAD_ID];
+        $new_conf = is_string($conf[PRELOAD_ID]) ? unserialize($conf[PRELOAD_ID]) : $conf[PRELOAD_ID];
 
-	// Update old structures
-	if (!isset($new_conf['squareThumbs'])) {
-	  $new_conf['squareThumbs'] = true;
-	}
+        // Update old structures
+        if (!isset($new_conf['squareThumbs'])) {
+          $new_conf['squareThumbs'] = true;
+        }
 
-	$conf[PRELOAD_ID] = serialize($new_conf);
-	conf_update_param(PRELOAD_ID, $conf[PRELOAD_ID]);
+        $conf[PRELOAD_ID] = serialize($new_conf);
+        conf_update_param(PRELOAD_ID, $conf[PRELOAD_ID]);
       }
 
     $this->installed = true;
@@ -73,7 +73,7 @@ class Preload_maintain extends PluginMaintain
   {
     if (!$this->installed)
       {
-	$this->install($plugin_version, $errors);
+        $this->install($plugin_version, $errors);
       }
   }
 

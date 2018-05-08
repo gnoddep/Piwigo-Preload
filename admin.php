@@ -41,11 +41,11 @@ if (isset($_POST['submit']))
   }
 
 $template->assign(array(
-			'Preload' => $conf[PRELOAD_ID],
-			));
+                        'Preload' => $conf[PRELOAD_ID],
+                        ));
 
 $template->set_filename('plugin_admin_content',
-			realpath(PRELOAD_PATH . 'template/admin.tpl'));
+                        realpath(PRELOAD_PATH . 'template/admin.tpl'));
 $template->assign_var_from_handle('ADMIN_CONTENT', 'plugin_admin_content');
 
 ?>

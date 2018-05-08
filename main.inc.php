@@ -60,9 +60,9 @@ function Preload_init()
 function Preload_admin_menu($menu)
 {
   $menu[] = array(
-		  'NAME' => 'Preload',
-		  'URL'  => get_root_url() . 'admin.php?page=plugin-' . PRELOAD_ID,
-		  );
+                  'NAME' => 'Preload',
+                  'URL'  => get_root_url() . 'admin.php?page=plugin-' . PRELOAD_ID,
+                  );
 
   return $menu;
 }
@@ -105,29 +105,29 @@ function Preload_asize_automatic_size($derivatives)
       $size = $derivative->get_size();
       if ($size)
       {
-	// if we have a very high picture (such as an infographic), we only try to match width
-	if ($size[0]/$size[1] < $conf['automatic_size_min_ratio'])
-	{
-	  if ($size[0] <= $available_size[0])
-	  {
-	    $automatic_size = $type;
-	  }
-	}
-	// if we have a very wide picture (panoramic), we only try to match height
-	elseif ($size[0]/$size[1] > $conf['automatic_size_max_ratio'])
-	{
-	  if ($size[1] <= $available_size[1])
-	  {
-	    $automatic_size = $type;
-	  }
-	}
-	else
-	{
-	  if ($size[0] <= $available_size[0] and $size[1] <= $available_size[1])
-	  {
-	    $automatic_size = $type;
-	  }
-	}
+        // if we have a very high picture (such as an infographic), we only try to match width
+        if ($size[0]/$size[1] < $conf['automatic_size_min_ratio'])
+        {
+          if ($size[0] <= $available_size[0])
+          {
+            $automatic_size = $type;
+          }
+        }
+        // if we have a very wide picture (panoramic), we only try to match height
+        elseif ($size[0]/$size[1] > $conf['automatic_size_max_ratio'])
+        {
+          if ($size[1] <= $available_size[1])
+          {
+            $automatic_size = $type;
+          }
+        }
+        else
+        {
+          if ($size[0] <= $available_size[0] and $size[1] <= $available_size[1])
+          {
+            $automatic_size = $type;
+          }
+        }
       }
     }
   }
@@ -178,10 +178,10 @@ function Preload_populate_images()
   }
 
   $query = '
-	SELECT *
-	  FROM '.IMAGES_TABLE.'
-	  WHERE id IN ('.implode(',', array_keys($ranks)).')
-	;';
+        SELECT *
+          FROM '.IMAGES_TABLE.'
+          WHERE id IN ('.implode(',', array_keys($ranks)).')
+        ;';
 
   $result = pwg_query($query);
 
@@ -191,20 +191,20 @@ function Preload_populate_images()
       $rank = $ranks[$row['id']];
       $srcImg = new SrcImage($row);
       if ($rank != $page['current_rank']) {
-	if ($is_automatic_size) {
-	  $img = Preload_asize_automatic_size(DerivativeImage::get_all($srcImg));
-	} else {
-	  $img = new DerivativeImage($thisSize, $size);
-	}
+        if ($is_automatic_size) {
+          $img = Preload_asize_automatic_size(DerivativeImage::get_all($srcImg));
+        } else {
+          $img = new DerivativeImage($thisSize, $size);
+        }
         if ($img != null) {
-	  $urls[] = $img->get_url();
+          $urls[] = $img->get_url();
         }
       }
       if ($conf[PRELOAD_ID]['squareThumbs']
-	  && ($rank != $prev_rank && $rank != $next_rank)) {
+          && ($rank != $prev_rank && $rank != $next_rank)) {
         $img = new DerivativeImage('square', $srcImg);
         if ($img != null) {
-	  $urls[] = $img->get_url();
+          $urls[] = $img->get_url();
         }
       }
     }
@@ -236,11 +236,11 @@ function Preload_header_prefilter($content, &$smarty)
   // The template will use U_PREFETCH_ARRAY if set (even if over U_PREFETCH is also set),
   // then fall back to U_PREFETCH.
   return preg_replace('/^([[:space:]]*\{if isset\(\$U_PREFETCH\).*\{\/if\}[[:space:]]*)$/m',
-		      '{if isset($U_PREFETCH_ARRAY)}
+                      '{if isset($U_PREFETCH_ARRAY)}
 
 {foreach from=$U_PREFETCH_ARRAY item=link key=id}<link rel="prefetch" href="{$link}">
 {/foreach}{else}\1{/if}',
-		      $content);
+                      $content);
 }
 
 function Preload_picture_prefilter($content, &$smarty)

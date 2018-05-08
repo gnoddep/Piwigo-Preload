@@ -19,14 +19,14 @@
 jQuery(window).load(function() {
     jQuery('HEAD LINK[rel=prefetch][href]')
     .each(function() {
-	    var link = jQuery(this).attr('href');
-	    if (link === undefined) return;
-	    var lastdot = link.lastIndexOf('.');
-	    if (lastdot >= 0) {
-		var ext = link.substr(lastdot+1).toLowerCase();
-		if (ext.match(/^(jpe?g|png)$/)) {
-		    new Image().src = link;
-		}
-	    }
-	});
+            var link = jQuery(this).attr('href');
+            if (link === undefined) return;
+            var lastdot = link.lastIndexOf('.');
+            if (lastdot >= 0) {
+                var ext = link.substr(lastdot+1).toLowerCase();
+                if (ext.match(/^(jpe?g|png)$/)) {
+                    new Image().src = link;
+                }
+            }
+        });
 });
