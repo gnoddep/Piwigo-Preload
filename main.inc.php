@@ -230,7 +230,7 @@ function Preload_populate_images()
   $template->assign('U_PREFETCH_ARRAY', $addUrls );
 }
 
-function Preload_header_prefilter($content, &$smarty)
+function Preload_header_prefilter($content, $smarty)
 {
   // Replace the single prefetch entry in the header with a list of prefetch URLs.
   // The template will use U_PREFETCH_ARRAY if set (even if over U_PREFETCH is also set),
@@ -243,7 +243,7 @@ function Preload_header_prefilter($content, &$smarty)
                       $content);
 }
 
-function Preload_picture_prefilter($content, &$smarty)
+function Preload_picture_prefilter($content, $smarty)
 {
   // Inject some extra javascript to force prefetching.
   return "{combine_script id='preload' require='jquery' load='header' path='plugins/Preload/js/preload.js'}
