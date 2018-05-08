@@ -194,7 +194,7 @@ function Preload_populate_images()
         if ($is_automatic_size) {
           $img = Preload_asize_automatic_size(DerivativeImage::get_all($srcImg));
         } else {
-          $img = new DerivativeImage($thisSize, $size);
+          $img = new DerivativeImage($size, $srcImg);
         }
         if ($img != null) {
           $urls[] = $img->get_url();
